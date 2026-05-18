@@ -1,0 +1,22 @@
+# Recovery Notes: Evalforge
+
+- Startup name: Evalforge
+- Folder: /Users/joshuadavis/startups/evalforge
+- One-line description: EvalForge EvalForge is a human-in-the-loop AI evaluation cockpit for comparing chatbot responses and coding answers with multiple OpenRouter models.
+- Target user: Founders, operators, and investors evaluating or launching new ventures.
+- Problem: The product needed clearer positioning, stronger demo readiness, and verified build/deploy hygiene.
+- Solution: An AI-assisted workflow that packages expertise, context, and decisions into a more usable product experience.
+- MVP goal: Make the core evalforge experience clear, navigable, buildable with pnpm, and ready for manual Vercel deployment.
+- Main pages/routes: /
+- Current state: Buildable pnpm web project with preserved routes and deployment hygiene.
+- Useful work preserved: Existing source, route structure, public assets, docs, package metadata, pnpm lockfile, and env examples were preserved.
+- Broken/drifted areas: pnpm lint failed:   ELIFECYCLE  Command failed with exit code 1.
+- Improvements made: Updated .gitignore with generated artifact, cache, log, and local env safeguards.; Cleaned generated local artifacts after validation (560M -> 584K).
+- Build/deploy status: Ready for manual Vercel deployment after fresh pnpm install/build.
+- Large files flagged: None over 25 MB after excluding generated/cache directories.
+- Return-later commands:
+  - pnpm install
+  - pnpm lint
+  - pnpm typecheck (no typecheck script present)
+  - pnpm build
+  - vercel --prod
