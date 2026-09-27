@@ -11,29 +11,25 @@
 html,body{max-width:100%;overflow-x:hidden}
 h1,h2,p,li,a{overflow-wrap:anywhere}
 
-body { margin:0; background:#1f2a24; color:#f7f4ef; font:18px/1.4 ui-sans-serif, system-ui; }
-.stage { min-height:100vh; display:grid; place-items:center; padding:24px; }
-.ticket { width:min(560px, 100%); background:#f7f4ef; color:#1f2a24; padding:28px; border-radius:18px 18px 8px 8px; }
-hr { border:0; border-top:2px dashed #1f6b4a; margin:16px 0; }
-h1 { font-size:40px; margin:8px 0; }
-h2 { font-size:22px; font-weight:600; }
-.cta { display:inline-block; margin-top:12px; background:#1f6b4a; color:#1f2a24; text-decoration:none; padding:12px 14px; border-radius:999px; }
-.notes { padding:8px 24px 32px; }
+body { margin:0; background:#f3f0ea; color:#20242c; font:18px/1.35 "Trebuchet MS", sans-serif; }
+header { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:18px 22px; background:#20242c; color:#f3f0ea; }
+.ch { display:grid; grid-template-columns:72px minmax(0,1fr); gap:12px; padding:28px 22px; border-bottom:1px solid #20242c; }
+b { color:#b45309; font-size:22px; }
+h1 { margin:0; font-size:clamp(32px, 4vw, 52px); line-height:1; }
+.cta { color:#f3f0ea; background:#b45309; text-decoration:none; padding:12px 14px; display:inline-block; }
+#scope { padding:22px; }
+@media (max-width:600px) { .ch { grid-template-columns:1fr; } }
 
 </style>
 </head>
 <body>
 
-<main class="stage">
-  <section class="ticket">
-    <p>Lab</p>
-    <h1>evalforge</h1>
-    <hr />
-    <h2>Grade model answers with a human still in the loop.</h2>
-    <p class="lede">Compare evaluator, skeptic, and judge passes, then approve or reject the draft yourself. The browser never sees the API key.</p>
-    <a class="cta" href="#scope">Open the stub</a>
-  </section>
+<main class="chapters">
+  <header><span>evalforge</span><span>Lab</span></header>
+  <section class="ch"><b>01</b><h1>Grade model answers with a human still in the loop.</h1></section>
+  <section class="ch"><b>02</b><p>Compare evaluator, skeptic, and judge passes, then approve or reject the draft yourself. The browser never sees the API key.</p></section>
+  <section class="ch"><b>03</b><a class="cta" href="#scope">Read what is withheld</a></section>
 </main>
-<section id="scope" class="notes"><ol><li>The page describes the current work. It does not invent customers.</li><li>A live signup, price, or metric appears here only when the product has one.</li><li>Maturity on this page is a label, not a launch claim.</li></ol></section>
+<section id="scope"><ul><li>The page describes the current work. It does not invent customers.</li><li>A live signup, price, or metric appears here only when the product has one.</li><li>Maturity on this page is a label, not a launch claim.</li></ul></section>
 </body>
 </html>
