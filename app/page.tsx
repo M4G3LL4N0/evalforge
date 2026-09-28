@@ -77,6 +77,7 @@ export default function Home() {
               <div className="mb-7 flex flex-wrap items-center gap-2">
                 <Badge className="border-cyan-200/25 bg-cyan-300/10 text-cyan-100">Manual-review workstation</Badge>
                 <Badge className="border-white/10 bg-white/[0.08] text-slate-200">Server-side API key only</Badge>
+                <Badge className="border-amber-200/20 bg-amber-300/10 text-amber-100">Developer preview · no customer count</Badge>
               </div>
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100/80">MULTI-MODEL EVALUATION COCKPIT</p>
               <h1 className="gradient-text mt-4 text-6xl font-semibold leading-[0.88] tracking-[-0.065em] sm:text-7xl lg:text-8xl">EvalForge</h1>
@@ -84,7 +85,7 @@ export default function Home() {
                 Grade AI responses with human judgment, model consensus, and compliance control.
               </h2>
               <p className="mt-7 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-                EvalForge compares responses across evaluator, skeptic, and judge models, then routes the final decision through a human review gate.
+                EvalForge compares responses across evaluator, skeptic, and judge models, then routes the final decision through a human review gate. The browser never sees the API key. Scores you see after a run are for that task — not published benchmark league tables.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <a href="#console"><Button type="button"><Radar className="h-4 w-4" />Start Evaluation</Button></a>
@@ -109,9 +110,9 @@ export default function Home() {
                 <div className="mb-4 flex flex-wrap gap-2">
                   {[
                     "Manual approval required",
-                    "OpenRouter multi-model stack",
+                    "Optional model stack when a key is configured",
                     "No auto-submit",
-                    "Audit-ready review logs",
+                    "Local review history in this browser",
                   ].map((item) => (
                     <Badge key={item} className="border-white/10 bg-white/[0.07] text-slate-200">
                       <CheckCircle2 className="mr-1.5 h-3.5 w-3.5 text-cyan-100" />
@@ -119,7 +120,7 @@ export default function Home() {
                     </Badge>
                   ))}
                 </div>
-                <p className="text-sm leading-6 text-slate-300">An institutional-grade AI evaluation cockpit built for careful, accountable review workflows.</p>
+                <p className="text-sm leading-6 text-slate-300">A review cockpit for careful, accountable evaluation. Runs stay on your machine until you save them here.</p>
               </div>
             </div>
           </div>
