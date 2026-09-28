@@ -37,6 +37,7 @@ export function EvalResults({ result, onSave }: { result: EvalResultPayload | nu
   const safeMode = current.compliance.safeAssistanceMode.enabled;
 
   async function copyFinalDraft() {
+    if (!humanChecklistCompleted) return;
     await navigator.clipboard.writeText(current.finalDraft);
   }
 
@@ -53,6 +54,7 @@ export function EvalResults({ result, onSave }: { result: EvalResultPayload | nu
   }
 
   function exportJson() {
+    if (!humanChecklistCompleted) return;
     const blob = new Blob([JSON.stringify({ ...current, humanChecklistCompleted }, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
@@ -87,10 +89,13 @@ export function EvalResults({ result, onSave }: { result: EvalResultPayload | nu
             </div>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button type="button" variant="secondary" onClick={copyFinalDraft}><Copy className="h-4 w-4" />{safeMode ? "Copy guidance" : "Copy final draft"}</Button>
+            <Button type="button" variant="secondary" onClick={copyFinalDraft} disabled={!humanChecklistCompleted}><Copy className="h-4 w-4" />{safeMode ? "Copy guidance" : "Copy final draft"}</Button>
             <Button type="button" variant="secondary" onClick={saveWithAudit}><Save className="h-4 w-4" />Save task</Button>
-            <Button type="button" variant="secondary" onClick={exportJson}><Download className="h-4 w-4" />Export JSON</Button>
+            <Button type="button" variant="secondary" onClick={exportJson} disabled={!humanChecklistCompleted}><Download className="h-4 w-4" />Export JSON</Button>
           </div>
+          {humanChecklistCompleted ? null : (
+            <p className="mt-4 text-sm leading-6 text-slate-300">Finish the human review checklist before copying or exporting this draft.</p>
+          )}
         </div>
       </Card>
 
