@@ -2,7 +2,7 @@
 
 import { AlertTriangle, Copy, Download, FileText, Save, ShieldCheck, Trophy } from "lucide-react";
 import { useState } from "react";
-import { formatCategoryLabel, type EvalResultPayload } from "@/lib/eval/types";
+import { formatCategoryLabel, type EvalResultPayload, type ModelVote } from "@/lib/eval/types";
 import { Button } from "./ui/Button";
 import { Card, CardTitle } from "./ui/Card";
 import { Badge } from "./ui/Badge";
@@ -98,6 +98,7 @@ export function EvalResults({ result, onSave }: { result: EvalResultPayload | nu
           )}
         </div>
       </Card>
+      <PerspectiveGate votes={result.modelVotes} />
 
       <ComplianceRiskPanel compliance={result.compliance} />
       <RationaleQualityCard />
@@ -143,6 +144,30 @@ export function EvalResults({ result, onSave }: { result: EvalResultPayload | nu
       </div>
       <HumanReviewChecklist checks={result.humanChecks} onCompletionChange={setHumanChecklistCompleted} />
     </div>
+  );
+}
+
+function PerspectiveGate({ votes }: { votes: ModelVote[] }) {
+  const skeptic = votes.find((vote) => vote.role === "skeptic");
+  const judge = votes.find((vote) => vote.role === "judge" || vote.role === "final_judge");
+  if (!skeptic || !judge) return null;
+  const aligned = skeptic.recommendation === judge.recommendation;
+  return (
+    <Card>
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Skeptic then judge</p>
+      <CardTitle>{aligned ? "Skeptic and judge agree" : "Skeptic and judge disagree"}</CardTitle>
+      <div className="mt-4 grid gap-3 md:grid-cols-2">
+        <p className="rounded-[34px] border border-white/10 bg-white/[0.065] p-5 text-sm leading-6 text-slate-300">
+          Skeptic: {skeptic.recommendation}. {skeptic.reason}
+        </p>
+        <p className="rounded-[34px] border border-white/10 bg-white/[0.065] p-5 text-sm leading-6 text-slate-300">
+          Judge: {judge.recommendation}. {judge.reason}
+        </p>
+      </div>
+      {aligned ? null : (
+        <p className="mt-4 text-sm leading-6 text-slate-300">The human checklist is the decision. Copy and export stay closed until every check is finished.</p>
+      )}
+    </Card>
   );
 }
 
