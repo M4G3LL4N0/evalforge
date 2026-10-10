@@ -1,175 +1,101 @@
-# EvalForge
+# evalforge
 
-<p align="center">
-  <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="assets/hero/hero-reduced.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/hero/hero-light.svg">
-    <img src="assets/hero/hero-motion.svg" alt="EvalForge — animated project plate showing request &rarr; authenticate &rarr; authorise &rarr; record &rarr; reject. Motion depicts this project's real state transition." width="100%">
-  </picture>
-</p>
+> Compare model answers. A person still has to approve them. Built in TypeScript on Next.js. 16 routes (/about, /api/evaluate, /contact); 1 entry point (index.html). TESTED: 1 test file.
 
-<p align="center">
-  <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="assets/hero/computational-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/hero/computational-light.svg">
-    <img src="assets/hero/computational-motion.svg" alt="State machine: request &rarr; authenticate &rarr; authorise &rarr; record &rarr; reject." width="100%">
-  </picture>
-</p>
+The implementation summary below is intentionally conservative. Claims from NORTHSTAR are not presented as shipped functionality.
 
-EvalForge is a human-in-the-loop AI evaluation cockpit for comparing chatbot responses and coding answers with multiple OpenRouter models.
+- [GitHub repository](https://github.com/M4G3LL4N0/evalforge)
+- [Project site](https://evalforge-public.vercel.app/)
 
-AI drafts analysis only. Manual human approval is required before using any recommendation.
+<!-- NOAERTH_IMAGE_SLOT: evalforge/hero -->
 
-## Setup
+## What it is
 
-```bash
-cd /Users/joshuadavis/startups/evalforge
+Compare model answers. A person still has to approve them. Built in TypeScript on Next.js. 16 routes (/about, /api/evaluate, /contact); 1 entry point (index.html). TESTED: 1 test file.
+
+This repository is part of the NOAERTH venture ecosystem. The current public-facing evidence identifies it as a early-stage project rather than a production-ready system.
+
+## Capabilities
+
+### Available evidence
+
+- The repository contains the implementation and documentation associated with the project description above.
+- The technology signals currently visible in the local project are listed in the technical notes below.
+- No additional capability is asserted here without a direct implementation reference.
+
+### Experimental or planned
+
+Roadmap intent is deliberately not represented as shipped functionality. Review NORTHSTAR and source implementation together before adding future-facing claims.
+
+<!-- NOAERTH_IMAGE_SLOT: evalforge/workflow -->
+
+## How it works
+
+The current evidence supports a repository-level application or tool workflow, but does not provide enough verified detail in the Part 1 record to publish a component-level architecture diagram. The architecture slot is reserved for a deterministic diagram after the source flow is reviewed.
+
+<!-- NOAERTH_IMAGE_SLOT: evalforge/architecture -->
+
+## Quick start
+
+### Prerequisites
+
+- A runtime suitable for `Node.js`.
+- A clean checkout of this repository.
+
+### Install
+
+```sh
 pnpm install
-cp .env.local.example .env.local
 ```
 
-Add `OPENROUTER_API_KEY` to `.env.local`, then run:
+### Run locally
 
-```bash
-pnpm dev
-pnpm build
+```sh
+pnpm run dev
 ```
 
-## OpenRouter
+### Build
 
-The API key is read only in `app/api/evaluate/route.ts` through server-side helpers. The browser posts task inputs to the local Next.js route and never receives the OpenRouter key.
+```sh
+pnpm run build
+```
 
-Default model roles:
+### Test
 
-- `fast`: `OPENROUTER_MODEL_FAST || "openai/gpt-4o-mini"`
-- `deep`: `OPENROUTER_MODEL_DEEP || "anthropic/claude-3.5-haiku"`
-- `skeptic`: `OPENROUTER_MODEL_SKEPTIC || "deepseek/deepseek-chat"`
-- `judge`: `OPENROUTER_MODEL_JUDGE || "google/gemini-flash-1.5"`
+```sh
+pnpm run test
+```
 
-The fast, deep, and skeptic evaluators run in parallel. The judge runs after those complete and synthesizes the final draft. If one evaluator fails, EvalForge continues with available outputs. If every evaluator fails, the API returns a readable error.
+Commands are included only when they were detected in the repository manifest; verify environment-specific requirements before deployment.
 
-## Modes
+## Technical notes
 
-EvalForge supports `general_qa`, `creative_writing`, `coding`, `math`, `medical`, `legal`, `financial`, `travel`, `recipe`, `summarization`, `rewriting`, `recommendation`, `classification`, `word_puzzle`, `email_or_message`, `list_generation`, and `other` category modes. Each mode adjusts evaluator guidance and the human review checklist.
+- **Primary language:** JavaScript/TypeScript
+- **Runtime:** Node.js
+- **Package manager:** pnpm
+- **Framework and integration signals:** Go, Next.js, OpenAI, Rust
+- **Entry-point signals:** package.json
+- **Test evidence:** TEST_PLAN.md
+- **Repository topics:** `react`, `typescript`, `app`, `components`, `dung30n5`, `next-js`, `noaerth`, `policy`
 
-## EvalForge Quality Standard
+## Status and roadmap
 
-- Be specific.
-- Fact-check primary claims.
-- Give concrete examples for subjective judgments.
-- Compare both responses directly.
-- Polish grammar before final use.
+**Current status:** Early-stage project.
 
-Strong rationales should name the winning response, identify the deciding dimension, cite specific evidence from both responses, and flag any factual claims that were not verified. EvalForge remains human-in-the-loop: AI prepares the analysis, and the reviewer makes the final judgment.
+**Current:** The repository and its documented implementation are available for inspection.
 
-## Local History
+**Next:** Reconcile the README, source behavior, and safe public product language before adding deeper examples or diagrams.
 
-Saved tasks are stored in browser `localStorage` only. Use **Export JSON** to download a result object for external recordkeeping.
+**Future:** Product direction is maintained separately and must not be read as a shipped feature list.
 
-<!-- TRILLIONX:presentation:begin -->
+## Contributing and license
 
-### Animated surfaces
+Follow the repository's existing contribution and licensing files where present. This README does not invent an open-source license or contribution policy.
 
-Generated from this repository's own source tree: every count, route and module below was measured, not written by hand.
+## Visual documentation
 
-#### Identity
+Image slots are intentionally comments until authentic screenshots, deterministic diagrams, or approved conceptual visuals exist. No absent image file is referenced.
 
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/hero-reduced.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/hero-light.svg">
-  <img alt="Identity diagram for evalforge" src="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/hero-motion.svg">
-</picture>
+## NOAERTH
 
-#### Entry points
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/terminal-reduced.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/terminal-light.svg">
-  <img alt="Entry points diagram for evalforge" src="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/terminal-motion.svg">
-</picture>
-
-#### Modules
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/architecture-reduced.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/architecture-light.svg">
-  <img alt="Modules diagram for evalforge" src="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/architecture-motion.svg">
-</picture>
-
-#### Routes
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/data_flow-reduced.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/data_flow-light.svg">
-  <img alt="Routes diagram for evalforge" src="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/data_flow-motion.svg">
-</picture>
-
-#### Primitives
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/state_machine-reduced.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/state_machine-light.svg">
-  <img alt="Primitives diagram for evalforge" src="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/state_machine-motion.svg">
-</picture>
-
-#### Composition
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/component_map-reduced.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/component_map-light.svg">
-  <img alt="Composition diagram for evalforge" src="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/component_map-motion.svg">
-</picture>
-
-#### Build and tests
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/build-reduced.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/build-light.svg">
-  <img alt="Build and tests diagram for evalforge" src="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/build-motion.svg">
-</picture>
-
-#### Workflow
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/workflow-reduced.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/workflow-light.svg">
-  <img alt="Workflow diagram for evalforge" src="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/workflow-motion.svg">
-</picture>
-
-#### Domain
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/domain-reduced.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/domain-light.svg">
-  <img alt="Domain diagram for evalforge" src="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/domain-motion.svg">
-</picture>
-
-#### Identity object
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/footer-reduced.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/footer-light.svg">
-  <img alt="Identity object diagram for evalforge" src="https://raw.githubusercontent.com/M4G3LL4N0/evalforge/main/.github-art/surfaces/footer-motion.svg">
-</picture>
-
-<!-- TRILLIONX:presentation:end -->
-
-<!-- TRILLIONX:evidence:begin -->
-
-## What is measurable here
-
-Generated by `.github-art` from the source tree at publish time.
-
-| Signal | Value |
-| --- | --- |
-| HTTP routes | 16 |
-| Entry points | 1 |
-| Module roots | 3 |
-| Test files | 1 |
-| CI workflows | 0 |
-| Distinctive stack | scaffold only |
-| Status | TESTED |
-| Evidence confidence | E3 |
-| Animated surfaces | 10 |
-
-<!-- TRILLIONX:evidence:end -->
+[NOAERTH](https://www.noaerth.com) is the venture ecosystem associated with this project.
